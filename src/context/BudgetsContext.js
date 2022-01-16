@@ -1,13 +1,14 @@
 import React, { useContext, useState } from 'react';
 
-// ID library
+// ID library import 
 import { v4 as uuidV4 } from 'uuid';
+// LS hook import 
+import useLocalStorage from '../hooks/useLocalStorage';
 
 // create CONTEXT
 const BudgetsContext = React.createContext();
 
-// Wrap entire application in CONTEXT - BudgetsProvider
-
+// HOOK to use the BudgetsContext.js as REACT CONTEXT and use it's function wherever we want 
 export function useBudgets() {
     return useContext(BudgetsContext);
 }
@@ -28,12 +29,14 @@ export function useBudgets() {
 } */
 
 
+// Wrap entire application in CONTEXT - BudgetsProvider container in index.js
 // define all constants and function to use as a CONTEXT
 export const BudgetsProvider = ({ children}) => {
-    const [budgets, setBudgets] = useState([])
-    const [expenses, setExpenses] = useState([])
+    // use custom hook to get the data from LS if they are in
+    const [budgets, setBudgets] = useLocalStorage("budgets", [])
+    const [expenses, setExpenses] = useLocalStorage("expenses", [])
 
-    // get the expenses by filtering all expenses based on budgetId
+    // get the expenses by filtering all expenses based on budgetId - return new array with expenses
     function getBudgetExpenses(budgetId) { 
         return expenses.filter(expense => expense.budgetId === budgetId)
     }
@@ -46,6 +49,7 @@ export const BudgetsProvider = ({ children}) => {
     }
 
     // add new BUDGET, spread the current BUDGETS array and add brand new one
+    // get the name and max parameters from AddBudgetModal inputs
     function addBudget({ name, max }) { 
         setBudgets(prevBudgets => {
             // check if new budget has the same name as one of currently existing - if so? just return current budgets array w/o changing
@@ -55,11 +59,22 @@ export const BudgetsProvider = ({ children}) => {
             return [...prevBudgets, { id: uuidV4(), name, max } ]
         })
     }
-    function deleteBudget() {
 
+    // delete the budget from current budgets array based on budget.id, if it's equal to id - filter it out of array
+    // return new filtered array
+    function deleteBudget({ id }) {
+        //TODO: Deal with expenses
+        setBudgets(prevBudgets => {
+            return prevBudgets.filter(budget => budget.id !== id)  
+        })
     }
-    function deleteExpense() {
 
+    // delete the expense from current expenses array based on expense.id, if it's equal to id - filter it out of array
+    // return new filtered array
+    function deleteExpense({ id }) {
+        setExpenses(prevExpenses => {
+            return prevExpenses.filter(expense => expense.id !== id)
+        })
     }
 
     // passing the 'value' - the object with variables, pass them down and all the children inside the CONTEXT has access to 'value' object
