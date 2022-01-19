@@ -8,6 +8,9 @@ import useLocalStorage from '../hooks/useLocalStorage';
 // create CONTEXT
 const BudgetsContext = React.createContext();
 
+// uncategorized budget for ExpenseModal 
+export const UNCATEGORIZED_BUDGET_ID = "Uncategorized";
+
 // HOOK to use the BudgetsContext.js as REACT CONTEXT and use it's function wherever we want 
 export function useBudgets() {
     return useContext(BudgetsContext);
@@ -50,9 +53,9 @@ export const BudgetsProvider = ({ children}) => {
 
     // add new BUDGET, spread the current BUDGETS array and add brand new one
     // get the name and max parameters from AddBudgetModal inputs
-    function addBudget({ name, max }) { 
+    function addBudget({ name, max }) {
         setBudgets(prevBudgets => {
-            // check if new budget has the same name as one of currently existing - if so? just return current budgets array w/o changing
+            // check if new budget has the same name as one of currently existing - if so, just return current budgets array w/o changing
             if(prevBudgets.find(budget => budget.name === name)) {
                 return prevBudgets
             }
