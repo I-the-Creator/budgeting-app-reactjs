@@ -6,8 +6,9 @@ export default function BudgetCard({
   amount,
   max,
   gray,
+  hideButtons,
   onAddExpenseClick,
-  hideButtons
+  onViewExpensesClick
 }) {
   // setting Card component background depending on 'amount', set the gray - if amount > 0
   const setCardClassNames = () => {
@@ -43,7 +44,7 @@ export default function BudgetCard({
             max={max}
             now={amount}
           />
-        )} 
+        )}
         {!hideButtons && (
           <Stack direction="horizontal" gap="2" className="mt-4">
             <Button
@@ -53,7 +54,9 @@ export default function BudgetCard({
             >
               Add Expense
             </Button>
-            <Button variant="outline-secondary">View Expenses</Button>
+            <Button onClick={onViewExpensesClick} variant="outline-secondary">
+              View Expenses
+            </Button>
           </Stack>
         )}
       </Card.Body>
