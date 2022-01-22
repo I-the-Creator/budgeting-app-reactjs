@@ -4,7 +4,7 @@ import { useBudgets, UNCATEGORIZED_BUDGET_ID } from "../context/BudgetsContext";
 
 // add defaultBudgetId to change the expense category(budget) 
 const AddExpenseModal = ({ show, handleClose, defaultBudgetId }) => {
-  // create references for control inputs of form
+  // create references to control inputs of form
   const descriptionRef = useRef();
   const amountRef = useRef();
   const budgetIdRef = useRef();
@@ -48,7 +48,7 @@ const AddExpenseModal = ({ show, handleClose, defaultBudgetId }) => {
             <Form.Select
               defaultValue={defaultBudgetId}  // setter for <option> 'value' attribute  
               ref={budgetIdRef}>
-                {/* default select option when adding outside budget - defaultBudgetId is an Event Object */}
+                {/* default select option when adding outside budget - defaultBudgetId is an Event Object in that case and won't be shown */}
                 <option id={UNCATEGORIZED_BUDGET_ID}>Uncategorized</option>
                 {/* specify options for select */}
                 {budgets.map(budget => (
