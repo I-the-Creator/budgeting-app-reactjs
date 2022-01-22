@@ -66,7 +66,14 @@ export const BudgetsProvider = ({ children}) => {
     // delete the budget from current budgets array based on budget.id, if it's equal to id - filter it out of array
     // return new filtered array
     function deleteBudget({ id }) {
-        //TODO: Deal with expenses
+        //move all the expenses associated with deleted budget should be moved to uncategorized
+        setExpenses(prevExpenses => {
+            return prevExpenses.map(expense => {
+                if (expense.budgetId !== id) return expense
+                return { ...expense, budgetId: UNCATEGORIZED_BUDGET_ID }
+            })
+        })
+
         setBudgets(prevBudgets => {
             return prevBudgets.filter(budget => budget.id !== id)  
         })
