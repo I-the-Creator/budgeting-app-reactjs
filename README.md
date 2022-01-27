@@ -14,16 +14,16 @@ Local storage is used to store data, so it won't be wiped out even after rebooti
 [Budgeting App](https://https://nervous-panini-3d8975.netlify.app/)
 
 ### App View
-![this is what applooks like](assets/general_view.jpg)\
+![this is what applooks like](assets/general_view.jpg)
 
 ### Expenses View
-![this is expenses modal view](assets/espenses_view.jpg)\
+![this is expenses modal view](assets/espenses_view.jpg)
 
 ### Add Budget Modal View
-![this is adding budget modal view](assets/adding_budget_view.jpg)\
+![this is adding budget modal view](assets/adding_budget_view.jpg)
 
 ### Add Expense Modal View
-![this is adding expense modal view](adding_expense_view.jpg)\
+![this is adding expense modal view](assets/adding_expense_view.jpg)
 
 # Getting Started with Create React App
 
