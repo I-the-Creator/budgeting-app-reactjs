@@ -6,11 +6,11 @@ Local storage is used to store data, so it won't be wiped out even after rebooti
 - React JS
 
 ## ```npm``` libraries/packages used:
-- bootstrap
+- react-bootstrap
 - uuid
 - create-react-app
 
-##Deployed application
+## Deployed application
 [Budgeting App](https://https://nervous-panini-3d8975.netlify.app/)
 
 ### App View
