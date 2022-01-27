@@ -11,7 +11,7 @@ Local storage is used to store data, so it won't be wiped out even after rebooti
 - create-react-app
 
 ## Deployed application
-[Budgeting App](https://https://nervous-panini-3d8975.netlify.app/)
+[Budgeting App](https://nervous-panini-3d8975.netlify.app/)
 
 ### App View
 ![this is what applooks like](assets/general_view.jpg)
